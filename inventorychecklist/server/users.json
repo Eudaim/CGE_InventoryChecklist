@@ -1,0 +1,38 @@
+[
+    {
+        "Name": "Ardonniss Zimero", 
+        "Email": "asz19@fsu.edu",
+        "Devices": {
+
+        },
+        "hasDevice": false, 
+        "Privelege": "admin"
+    },
+    {
+        "Name": "Amado Cruz",
+        "Email": "acruz2@fsu.edu", 
+        "Devices": {
+
+        }, 
+        "hasDevice": false,
+        "Privelege": "admin"
+    },
+    {
+        "Name": "Jone Doe", 
+        "Email": "jonedoe@gmail.com", 
+        "Devices":{
+
+        }, 
+        "hasDevice": false, 
+        "Privelege": "user"
+    },
+    {
+        "Name": "Jane Doe", 
+        "Email": "jandoe@gmail.com", 
+        "Devices": {
+
+        }, 
+        "hasDevice": false, 
+        "Privelege": "user"
+    }
+]
