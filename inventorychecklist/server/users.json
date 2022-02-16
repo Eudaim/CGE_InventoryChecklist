@@ -2,6 +2,7 @@
     {
         "Name": "Ardonniss Zimero", 
         "Email": "asz19@fsu.edu",
+        "Password": "cgeasz",
         "Devices": {
 
         },
@@ -11,6 +12,7 @@
     {
         "Name": "Amado Cruz",
         "Email": "acruz2@fsu.edu", 
+        "Password": "cgeacruz",
         "Devices": {
 
         }, 
@@ -18,8 +20,9 @@
         "Privelege": "admin"
     },
     {
-        "Name": "Jone Doe", 
+        "Name": "John Doe", 
         "Email": "jonedoe@gmail.com", 
+        "Password": "cgejohndoe",
         "Devices":{
 
         }, 
@@ -29,6 +32,7 @@
     {
         "Name": "Jane Doe", 
         "Email": "jandoe@gmail.com", 
+        "Password": "cgejandoe",
         "Devices": {
 
         }, 

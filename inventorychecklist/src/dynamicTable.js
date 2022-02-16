@@ -1,59 +1,93 @@
-import React, { Component} from 'react'
+import React, { Component, useState} from 'react'
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
 import CenteredModal from './centeredModal'
 import './table.css'
+import data from "./devices.json"
 
-class DynamicTable extends Component {
-    constructor(props) {
-       super(props) //since we are extending class Table so we have to use super in order to override Component class constructor
-       this.state = { //state is by default an object
-          students: [
-             { id: 1, type: 'Laptop', owner: 'wasif@email.com', location: 'CGE-2200', checkout: false},
-             { id: 2, type: 'Dock', owner: 'ali@email.com', location: 'CGE-2200', checkout: false },
-             { id: 3, type: 'Laptop', owner: 'johdoe@email.com', location: 'CGE-2200', checkout: false },
-             { id: 4, type: 'Dock', owner: 'janedoe.@email.com', location: 'CGE-2200', checkout: false}
-          ]
-       }
-    }
-    renderTableHeader(){
-      //  let header = Object.keys(this.state.students[0])
-      let header = ['id', 'type', 'owner', 'location', 'operation']
-       return header.map((key,index)=>{
-          return <th key={index}>{key.toUpperCase()}</th>
-       })
-    }
-    renderTableData(){
-       return this.state.students.map((student,index) => {
-         const {id, type, owner, location} = student
-         return (
-            <tr key={id}>
-               <td>{id}</td>
-               <td>{type}</td>
-               <td>{owner}</td>
-               <td>{location}</td>
-               <td className='operation'>
-                  <CenteredModal></CenteredModal>
-               </td>
-            </tr> 
-         )
-       })
-    }
-    render() { //Whenever our class runs, render method will be called automatically, it may have already defined in the constructor behind the scene. 
-      return (
-         <div>
-            <h1 id='title'>CGE Inventory CheckList</h1>
-            <Table striped bordered hover id='students'>
-               <tbody>
-                  {this.renderTableHeader()}
-                  {this.renderTableData()}
-               </tbody>
-            </Table>
-         </div>
-      )
+const DynamicTable = () => {
+   const [devices, setDevice] = useState(data); 
+   const [addFormData, setAddFormData] = useState({
+      ID: " ", 
+      type: " ", 
+      brand: " ", 
+      serialNum: " "
+   })
+
+   const handleAddFormChange = (event) => {
+      event.preventDefault();
+
+      const fieldName = event.target.getAttribute("name"); 
+      const fieldValue = event.target.value; 
+      
+      const newFormData = {...addFormData}; 
+      newFormData[fieldName] = fieldValue;
+      setAddFormData(newFormData)
    }
-   itemCheckOut(id){
-      alert(`you just clicked ${id}`);      
-   }   
+
+   return (
+      <div>
+      <h1 id="title">CGE Availible Inventory</h1>
+      <Table striped border hover id='device'> 
+         <thead id> 
+            <tr> 
+            <th>Device ID</th>
+            <th>Device Type</th>
+            <th>Device Brand</th>
+            <th>Device Serial</th>
+            </tr>
+         </thead>
+         <tbody>
+            {devices.map((device) => 
+            <tr>
+               <td>{device.device_ID}</td>
+               <td>{device.device_Type}</td>
+               <td>{device.device_Brand}</td>
+               <td>{device.device_SerialNum}</td>
+               
+            </tr>)}
+         </tbody>
+      </Table>
+      <form>
+            <input 
+               type="text"
+               name="ID"
+               required="required"
+               placeholder="Enter device ID... "
+               onChange={handleAddFormChange}
+               id="box"
+            >
+            </input>
+            <input
+               type="text"
+               name="type"
+               required="required"
+               placeholder="Enter device Serial Number..."
+               onChange={handleAddFormChange}
+               id="box"
+            >
+            </input>
+            <input 
+               type="text"
+               name="brand"
+               required="required"
+               placeholder="Enter device brand..."
+               onChange={handleAddFormChange}
+               id="box"
+            >
+            </input>
+            <input 
+               type="text"
+               name="serialNum"
+               required="required"
+               placeholder="Enter device Serial Number..."
+               onChange={handleAddFormChange}
+               id="box"
+            >
+            </input>
+         </form> 
+      </div>
+   )
 }
-export default DynamicTable //exporting make it reuseable
+
+export default DynamicTable; 
