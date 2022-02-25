@@ -62,5 +62,9 @@
   "devDependencies": {
     "nodemon": "^2.0.15",
     "webpack": "^5.68.0"
+  }, 
+  "browser": {
+    "fs": false, 
+    "os": false
   }
 }

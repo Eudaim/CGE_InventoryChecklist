@@ -4,27 +4,15 @@ import Button from 'react-bootstrap/Button'
 import CenteredModal from './centeredModal'
 import './table.css'
 import data from "./devices.json"
-
+import Hardware from './hardwareModal'
 const DynamicTable = () => {
-   const [devices, setDevice] = useState(data); 
-   const [addFormData, setAddFormData] = useState({
-      ID: " ", 
-      type: " ", 
-      brand: " ", 
-      serialNum: " "
+   const [devices, setDevices] = useState(data); 
+   const [formData, setFormData] = useState({
+      device_ID: " ", 
+      device_Type: " ", 
+      device_Brand: " ", 
+      device_SerialNum: " "
    })
-
-   const handleAddFormChange = (event) => {
-      event.preventDefault();
-
-      const fieldName = event.target.getAttribute("name"); 
-      const fieldValue = event.target.value; 
-      
-      const newFormData = {...addFormData}; 
-      newFormData[fieldName] = fieldValue;
-      setAddFormData(newFormData)
-   }
-
    return (
       <div>
       <h1 id="title">CGE Availible Inventory</h1>
@@ -35,6 +23,8 @@ const DynamicTable = () => {
             <th>Device Type</th>
             <th>Device Brand</th>
             <th>Device Serial</th>
+            <th>Device Hardware</th>
+            <th>CheckOut</th>
             </tr>
          </thead>
          <tbody>
@@ -44,48 +34,11 @@ const DynamicTable = () => {
                <td>{device.device_Type}</td>
                <td>{device.device_Brand}</td>
                <td>{device.device_SerialNum}</td>
-               
+               <td>{<Hardware hardware={device.Hardware}/>}</td>
+               <td><CenteredModal device={device}></CenteredModal></td>
             </tr>)}
          </tbody>
       </Table>
-      <form>
-            <input 
-               type="text"
-               name="ID"
-               required="required"
-               placeholder="Enter device ID... "
-               onChange={handleAddFormChange}
-               id="box"
-            >
-            </input>
-            <input
-               type="text"
-               name="type"
-               required="required"
-               placeholder="Enter device Serial Number..."
-               onChange={handleAddFormChange}
-               id="box"
-            >
-            </input>
-            <input 
-               type="text"
-               name="brand"
-               required="required"
-               placeholder="Enter device brand..."
-               onChange={handleAddFormChange}
-               id="box"
-            >
-            </input>
-            <input 
-               type="text"
-               name="serialNum"
-               required="required"
-               placeholder="Enter device Serial Number..."
-               onChange={handleAddFormChange}
-               id="box"
-            >
-            </input>
-         </form> 
       </div>
    )
 }
