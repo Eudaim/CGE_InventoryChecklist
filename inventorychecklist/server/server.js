@@ -76,6 +76,9 @@ app.post("/user/login", async function(request, response){
  app.post("/user/login", function(request, response){
    
  })
+ app.post("/inventory", function(request, response){
+   response.redirect("/inventory");
+ })
  app.get("/user/login", function(request, response){
    response.sendFile(path.join(reqPath,"build","index.html"))
  })

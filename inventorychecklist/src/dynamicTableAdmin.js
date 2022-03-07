@@ -60,7 +60,7 @@ const DynamicTableAdmin = () => {
             </tr>)}
          </tbody>
       </Table>
-      <form onSubmit={handleAddFormSubmit} method="post" action="/inventory/admin">
+      <form onSubmit={handleAddFormSubmit} method="post" action="/inventory">
             <input 
                type="text"
                name="device_ID"

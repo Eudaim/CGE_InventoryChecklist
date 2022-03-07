@@ -17,9 +17,6 @@ function MyVerticallyCenteredModal(props) {
       }
     }, [isLoading]);
 
-   const gotEmail = (event) => { 
-      // code you want to do
-    }
     const  handleClick = () => {
       setLoading(true)
     }
@@ -41,7 +38,7 @@ function MyVerticallyCenteredModal(props) {
           <p>Serial Number: {props.device.device_SerialNum}</p>
           <p>Type: {props.device.device_Type}</p>
           <p>Brand: {props.device.device_Brand}</p>
-          <Form onSubmit={this.gotInfo}>
+          <Form>
           <form method="post" action="/inventory">
             <Row className='mb-3'>
               <Form.Group className="mb-3" controlId='formEmail'>
@@ -69,7 +66,7 @@ function MyVerticallyCenteredModal(props) {
             <div className="d-grid gap-2">
               <Button id="altShownBttn" variant="primary" size="lg"
                 type="submit"
-                disabled={isLoading}
+                // disabled={isLoading}
                 onClick={!isLoading ? handleClick : null}>
                 {isLoading ? 'Submitting request...' : 'Submit'}
               </Button>
